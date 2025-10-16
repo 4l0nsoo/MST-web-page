@@ -1,0 +1,8 @@
+#floating-icon{
+    position: fixed;
+    top: 85%;
+    left: 92%;
+    z-index: 200;
+    color: greenyellow;
+    width: 50px;
+}

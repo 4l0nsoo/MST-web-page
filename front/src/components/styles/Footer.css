@@ -1,0 +1,30 @@
+.footerCont{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #3b456d;
+    color: white;
+    height: 20vh;
+}
+
+
+.footerCont svg{
+    width: 30px;
+    margin: 50px 1px 10px;
+}
+
+.adicional{
+    font-size: 12px;
+    line-height: 1.8em;
+    padding-top: 1.5em;
+}
+
+.adicional ul li{
+    text-decoration: none;
+    list-style: none;
+}
+
+.copyright{
+    grid-column: 1/3;
+    font-size: 9px;
+    align-self: end;
+}
