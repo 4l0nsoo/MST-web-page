@@ -1,10 +1,16 @@
 import { Router, Request, Response } from "express";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { users, AdminUser, ClientUser } from "../users.js";
+import { users, AdminUser, ClientUser } from "../users";
 
 const router = Router();
-const SECRET_KEY = "clave_super_secreta";
+
+if (!process.env.JWT_SECRET) {
+  console.error("❌ ERROR FATAL: JWT_SECRET no está definido en el entorno.");
+  process.exit(1); 
+}
+
+const SECRET_KEY = process.env.JWT_SECRET as string
 
 // 🔐 Login administrador (correo + contraseña)
 router.post("/login-admin", async (req: Request, res: Response) => {

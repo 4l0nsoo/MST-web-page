@@ -172,6 +172,10 @@
     border-radius: 50px;
   }
 
+  .info-tabs{
+    gap: 0px;
+  }
+
   .info-tabs-container{
     grid-column: 1/7;
   }

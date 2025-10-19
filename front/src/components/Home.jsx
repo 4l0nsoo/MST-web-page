@@ -4,6 +4,13 @@ import { useState } from 'react'
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("Misión");
+  // form state
+  const [nombre, setNombre] = useState("");
+  const [email, setEmail] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [mensaje, setMensaje] = useState("");
+  const [statusMessage, setStatusMessage] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   return (
     <>
@@ -85,12 +92,51 @@ const Home = () => {
 
         <section className="service-form">
           <h2>Solicitar servicio</h2>
-          <form>
-            <input type="text" placeholder="Nombre" />
-            <input type="email" placeholder="Correo" />
-            <input type="text" placeholder="Asunto / Problemática" />
-            <textarea rows="4" placeholder="Mensaje"></textarea>
-            <button type="submit">Enviar</button>
+          <form onSubmit={async (e) => {
+            e.preventDefault();
+            setStatusMessage("");
+
+            // basic validation
+            if (!nombre || !email || !mensaje) {
+              setStatusMessage('Por favor complete los campos Nombre, Correo y Mensaje.');
+              return;
+            }
+
+            setSubmitting(true);
+
+            try {
+              const base = import.meta.env.VITE_API_BASE || 'http://localhost:3000';
+              const res = await fetch(`${base}/api/mail/send-mail`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nombre, email, telefono, mensaje }),
+              });
+
+              const data = await res.json();
+
+              if (res.ok) {
+                setStatusMessage(data.message || 'Solicitud enviada correctamente.');
+                // clear form
+                setNombre('');
+                setEmail('');
+                setTelefono('');
+                setMensaje('');
+              } else {
+                setStatusMessage(data.message || 'Error al enviar la solicitud.');
+              }
+            } catch (err) {
+              console.error(err);
+              setStatusMessage('Error de red. Intente nuevamente.');
+            } finally {
+              setSubmitting(false);
+            }
+          }}>
+            <input value={nombre} onChange={(e) => setNombre(e.target.value)} type="text" placeholder="Nombre" />
+            <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Correo" />
+            <input value={telefono} onChange={(e) => setTelefono(e.target.value)} type="text" placeholder="Teléfono (opcional)" />
+            <textarea value={mensaje} onChange={(e) => setMensaje(e.target.value)} rows="4" placeholder="Mensaje"></textarea>
+            <button disabled={submitting} type="submit">{submitting ? 'Enviando...' : 'Enviar'}</button>
+            {statusMessage && <p className="form-status">{statusMessage}</p>}
           </form>
         </section>
       </div>

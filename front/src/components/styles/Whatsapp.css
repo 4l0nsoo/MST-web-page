@@ -6,3 +6,12 @@
     color: greenyellow;
     width: 50px;
 }
+
+@media (max-width:600px) {
+
+  #floating-icon{
+    top: 70%;
+    left: 82%;
+  }
+
+}
