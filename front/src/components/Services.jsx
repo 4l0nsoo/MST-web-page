@@ -1,8 +1,9 @@
 import { useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import Navbar from './Navbar.jsx'
+import Footer from './Footer.jsx'
 import "./styles/Services.css"
-import { exmpl, mantenimiento } from '../assets/servicesimport.js'
+import { mantenimiento, redes, arduino, tecnicos } from '../assets/servicesimport.js'
 
 function Services() {
 
@@ -42,7 +43,7 @@ const handleClick = (e, ref, index) => {
 
     // calcular escala para cubrir todo
     const maxDim = Math.max(rect.width, rect.height);
-    const finalScale = (maxDim * 2) /19;
+    const finalScale = (maxDim * 2) /10;
 
     // animación
     gsap.to(ripple, {
@@ -77,12 +78,7 @@ const handleClick = (e, ref, index) => {
               <button>Buscar</button>
             </form>
             <div className='employees'>
-              <img src={exmpl} alt="" />
-              <img src={exmpl} alt="" />
-              <img src={exmpl} alt="" />
-              <img src={exmpl} alt="" />
-              <img src={exmpl} alt="" />
-              <img src={exmpl} alt="" />
+              <img src={tecnicos[0]} alt="" />
             </div>
           </div>
           <div></div>
@@ -91,13 +87,21 @@ const handleClick = (e, ref, index) => {
       <div ref={cont2} className={`service-container ${expandido === 1 ? "expandida": ""}`} onClick={(e) => handleClick(e, cont2, 1)}>
         <h1>Redes</h1>
         <p>Nuestro equipo de redes ofrece soluciones integrales en telecomunicaciones, desde la instalación de cableado estructurado hasta la configuración de equipos de conectividad para empresas y hogares.</p>
-
+        <div className='imagesRed'>
+            <img src={redes[0]} alt="hola" />
+            <img src={redes[1]} alt="hola" />
+          </div>
       </div>
       <div ref={cont3} className={`service-container ${expandido === 2 ? "expandida": ""}`} onClick={(e) => handleClick(e, cont3, 2)}>
         <h1>Arduino</h1>
+        <p>Ofrecemos servicios especializados en proyectos con Arduino, desde el diseño y desarrollo de prototipos hasta la programación y optimización de sistemas embebidos para diversas aplicaciones tecnológicas.</p>
+          <div className='imagesArduino'>
+            <img src={arduino[0]} alt="hola" />
+            <img src={arduino[1]} alt="hola" />
+          </div>
       </div>
     </div>
-
+    <Footer></Footer>
     </div>
   )
 }

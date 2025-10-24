@@ -74,6 +74,31 @@
     border-radius: 20px 0px;
 }
 
+.imagesRed{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+
+.imagesRed img{
+    width: 300px;
+    height: 250px;
+    margin: 0 10px;
+    border-radius: 20px 0px;
+}
+
+.imagesArduino{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+
+.imagesArduino img{
+    width: 200px;
+    margin: 0 10px;
+    border-radius: 20px 0px;
+}
+
 .Identify-form{
     display: flex;
     flex-direction: column;
@@ -102,16 +127,17 @@
 
 .employees{
     margin-top: 10%;
- display: grid;
-  grid-template-columns: repeat(3, auto); /* cada columna se ajusta al contenido */
-  gap: 10% 20%;
-  justify-content: center;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    height: 60vh;
+    border-radius: 300px 0 300px 0;
+    overflow: hidden;
 }
 
 .employees img{
-    width: 100px;
-    border: #999 1px solid;
-      place-content: center;
+    width: 50vw;
+    place-content: center;
 }
 
 @media (max-width:786px){
