@@ -7,9 +7,9 @@ router.post("/send-mail", async (req: Request, res: Response) => {
   const { nombre, email, telefono, mensaje } = req.body;
 
   try {
-    await transporter.sendMail({
+    const info = await transporter.sendMail({
       from: `"Formulario de servicio" <${process.env.MAIL_USER}>`,
-      to: process.env.MAIL_TO, // a quién llegará el correo
+      to: process.env.MAIL_TO,
       subject: "Nueva solicitud de servicio",
       html: `
         <h3>Datos del cliente</h3>
@@ -22,10 +22,11 @@ router.post("/send-mail", async (req: Request, res: Response) => {
       `,
     });
 
+    console.log("Correo enviado:", info);
     res.status(200).json({ message: "Correo enviado correctamente ✅" });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Error al enviar el correo ❌" });
+    console.error("Error enviando correo:", error);
+    res.status(500).json({ message: "Error al enviar el correo ❌", error });
   }
 });
 
