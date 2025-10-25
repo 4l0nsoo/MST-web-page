@@ -14,7 +14,7 @@ function AboutUs() {
           <img src={aboutStart[0]} alt="" />
           <img src={aboutStart[1]} alt="" />
         </div>
-        <section class="values" aria-labelledby="valores-title">
+        <section className="values" aria-labelledby="valores-title">
     <h1 id="valores-title">Nuestros valores</h1>
     <ol>
       <li>
