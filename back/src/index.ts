@@ -11,7 +11,7 @@ const app = express();
 
 app.use(cors({
   origin: ["https://mst-web-page.vercel.app"],
-  methods: ["GET", "POST, OPTIONS"],
+  methods: ["GET", "POST","OPTIONS"],
   allowedHeaders: ["Content-Type"],
 }));
 app.use(bodyParser.json());
