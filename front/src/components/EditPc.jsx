@@ -6,6 +6,7 @@ function EditPc() {
   const [clientData, setClientData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000"
 
   // 🔎 Buscar cliente por código
   const handleSearch = async (e) => {
@@ -16,7 +17,7 @@ function EditPc() {
 
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:3000/api/client/${refCode}`, {
+      const res = await fetch(`${API_URL}/api/client/${refCode}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
