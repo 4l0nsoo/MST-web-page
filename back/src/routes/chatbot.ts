@@ -1,15 +1,18 @@
-import { Router, Request, Response} from "express";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { Router, Request, Response } from "express";
+import { GoogleGenAI } from "@google/genai";
 
 const router = Router();
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
-const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+// Crea el cliente usando la API key del entorno
+const ai = new GoogleGenAI({});
 
 router.post("/chatbot", async (req: Request, res: Response) => {
-  const { message } = req.body;
+  console.log("POST /chatbot recibido");
+  console.log("Body recibido:", req.body);
 
+  const { message } = req.body;
   if (!message) {
+    console.log("Mensaje vacío");
     return res.status(400).json({ error: "Mensaje vacío" });
   }
 
@@ -21,11 +24,19 @@ router.post("/chatbot", async (req: Request, res: Response) => {
       Pregunta del usuario: ${message}
     `;
 
-    const result = await model.generateContent(prompt);
-    const reply = result.response.text();
+    console.log("Generando respuesta en Gemini...");
+    const result = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: prompt,
+    });
+
+    console.log("Resultado raw:", result);
+    const reply = result.text; // según la nueva librería
+    console.log("Reply generado:", reply);
+
     res.json({ reply });
   } catch (error) {
-    console.error("Error al generar respuesta:", error);
+    console.error("Error al generar respuesta:", error instanceof Error ? error.message : error);
     res.status(500).json({ error: "Error al procesar el mensaje" });
   }
 });
