@@ -11,14 +11,17 @@ import chatbotRoutes from "./routes/chatbot";
 
 const app = express();
 
+
+// Desarrollo
+// app.use(cors());
+
+// Produccion
+app.use(express.json());
 app.use(cors({
   origin: ["https://mst-web-page.vercel.app"],
   methods: ["GET", "POST","OPTIONS"],
   allowedHeaders: ["Content-Type"],
 }));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json());
 app.use("/api/mail", mailRoutes);
 app.use("/api", authRoutes);
 app.use("/api", chatbotRoutes);
