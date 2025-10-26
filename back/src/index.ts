@@ -21,7 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use("/api/mail", mailRoutes);
 app.use("/api", authRoutes);
-app.use("/api/chatbot", chatbotRoutes);
+app.use("/api", chatbotRoutes);
 
 app.get("/", (req, res) => {
   res.send("API funcionando correctamente");

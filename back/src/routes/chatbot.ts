@@ -6,7 +6,7 @@ const router = Router();
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-router.post("/api/chatbot", async (req: Request, res: Response) => {
+router.post("/chatbot", async (req: Request, res: Response) => {
   const { message } = req.body;
 
   if (!message) {
