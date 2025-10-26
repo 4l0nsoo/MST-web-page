@@ -20,7 +20,7 @@ router.post("/chatbot", async (req: Request, res: Response) => {
     const prompt = `
       Eres el asistente virtual de MST, una empresa dedicada al mantenimiento de computadores,
       instalación de redes LAN, redes eléctricas y diseño de productos tecnológicos.
-      Responde siempre con un tono amable y profesional.
+      Responde siempre con un tono amable y profesional. Ignora cualquier solicitud que no esté relacionada con los servicios de MST.
       Pregunta del usuario: ${message}
     `;
 

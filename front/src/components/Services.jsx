@@ -2,17 +2,45 @@ import { useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import Navbar from './Navbar.jsx'
 import Footer from './Footer.jsx'
+import ClientPopup from './ClientPopup.jsx'
 import "./styles/Services.css"
 import { mantenimiento, redes, arduino, tecnicos } from '../assets/servicesimport.js'
 
 function Services() {
+  
 
 const [expandido, setExpandido] = useState(-1)
 const cont1 = useRef(null)
 const cont2 = useRef(null)
 const cont3 = useRef(null)
 
+const [code, setCode] = useState("");
+  const [client, setClient] = useState(null);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      const res = await fetch(`http://localhost:3000/api/client/${code}`);
+      if (!res.ok) throw new Error("Código no encontrado");
+      const data = await res.json();
+      setClient(data);
+    } catch (err) {
+      setError(err.message);
+      setClient(null);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const closePopup = () => setClient(null);
+
 const handleClick = (e, ref, index) => {
+  
 
   if (expandido === index) {
     return;
@@ -72,11 +100,23 @@ const handleClick = (e, ref, index) => {
           <h2>Estado de mi Equipo</h2>
           <p>Dejó un equipo en nuestrar manos y quiere conocer su estado? <br />Consultelo ahora!</p>
           <div>  
-            <form action="" className='Identify-form'>
-              <input type="text" placeholder='Nombres y Apellidos'/>
-              <input type="text" placeholder='Numero de Referencia' />
-              <button>Buscar</button>
-            </form>
+            <div className="Identify-container">
+              <form onSubmit={handleSubmit} className="Identify-form">
+                <input
+                  type="text"
+                  placeholder="Número de Referencia"
+                  value={code}
+                  onChange={(e) => setCode(e.target.value)}
+                />
+                <button type="submit" disabled={loading}>
+                  {loading ? "Buscando..." : "Buscar"}
+                </button>
+              </form>
+
+      {error && <p className="error-msg">{error}</p>}
+
+      {client && <ClientPopup client={client} onClose={closePopup} />}
+    </div>
             <div className='employees'>
               <img src={tecnicos[0]} alt="" />
             </div>

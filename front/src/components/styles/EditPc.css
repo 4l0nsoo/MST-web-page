@@ -1,0 +1,86 @@
+.editpc-container {
+  max-width: 600px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #f8f9fb;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+h2 {
+  color: #294795;
+  margin-bottom: 1.5rem;
+}
+
+.search-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.search-form input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.search-form button {
+  background-color: #294795;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.search-form button:hover {
+  background-color: #1f356d;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin-top: 1rem;
+}
+
+.edit-form label {
+  margin-top: 10px;
+  font-weight: 600;
+  color: #333;
+}
+
+.edit-form input,
+.edit-form textarea {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  margin-top: 5px;
+  resize: none;
+}
+
+.edit-form button {
+  margin-top: 1.5rem;
+  background-color: #294795;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.edit-form button:hover {
+  background-color: #1f356d;
+}
+
+.message {
+  margin-top: 10px;
+  color: #e74c3c;
+  font-weight: 500;
+}

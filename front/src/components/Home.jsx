@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import './styles/Home.css'
 import { useState } from 'react'
+import { Chatbot } from './Chatbot'
 
 const Home = () => {
   const [activeTab, setActiveTab] = useState("Misión");
@@ -105,7 +106,7 @@ const Home = () => {
             setSubmitting(true);
 
             try {
-              const base = import.meta.env.VITE_API_BASE || 'http://localhost:3000';
+              const base = import.meta.env.VITE_API_URL || 'http://localhost:3000';
               const res = await fetch(`${base}/api/mail/send-mail`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -140,6 +141,7 @@ const Home = () => {
           </form>
         </section>
       </div>
+      <Chatbot/>
     </>
   )
 }

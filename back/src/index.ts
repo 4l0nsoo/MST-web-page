@@ -5,6 +5,7 @@ import cors from "cors";
 import authRoutes from "./routes/auth";
 import mailRoutes from "./routes/mail";
 import chatbotRoutes from "./routes/chatbot";
+import tokenRoutes from "./routes/token";
 
 const app = express();
 
@@ -16,18 +17,19 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
-app.use(cors()); // Permitir todas las solicitudes CORS durante el desarrollo
+// app.use(cors()); // Permitir todas las solicitudes CORS durante el desarrollo
 
-// app.use(cors({
-//   origin: ["https://mst-web-page.vercel.app"],
-//   methods: ["GET", "POST", "OPTIONS"],
-//   allowedHeaders: ["Content-Type"],
-// }));
+app.use(cors({
+  origin: ["https://mst-web-page.vercel.app"],
+  methods: ["GET", "POST", "OPTIONS"],
+  allowedHeaders: ["Content-Type"],
+}));
 
 // Rutas
 app.use("/api/mail", mailRoutes);
 app.use("/api", authRoutes);
 app.use("/api", chatbotRoutes);
+app.use("/api", tokenRoutes);
 
 // Ruta raíz
 app.get("/", (req, res) => {

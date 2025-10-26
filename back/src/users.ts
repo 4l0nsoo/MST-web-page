@@ -26,7 +26,7 @@ export const users: User[] = [
     id: "1",
     type: "admin",
     email: "admin@tecnostore.com",
-    passwordHash: "$2b$10$...", // <-- esto lo reemplazas por un hash real
+    passwordHash: "admin", 
   },
   {
     id: "2",
