@@ -12,7 +12,7 @@ function ProtectedRoute({ children }) {
       return;
     }
 
-    fetch(`${API_URL}/api/verifytoken`, {
+    fetch(`${API_URL}/api/verify-token`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {
