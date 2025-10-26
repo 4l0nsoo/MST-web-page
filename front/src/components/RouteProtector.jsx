@@ -3,6 +3,7 @@ import { Navigate } from "react-router-dom";
 
 function ProtectedRoute({ children }) {
   const [isValid, setIsValid] = useState(null);
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -11,7 +12,7 @@ function ProtectedRoute({ children }) {
       return;
     }
 
-    fetch("http://localhost:3000/api/verify-token", {
+    fetch(`${API_URL}/api/verifytoken`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {
@@ -22,7 +23,7 @@ function ProtectedRoute({ children }) {
         localStorage.removeItem("token"); // 👈 limpia si expiró
         setIsValid(false);
       });
-  }, []);
+  }, [API_URL]);
 
   if (isValid === null) return <p>Verificando sesión...</p>;
   if (!isValid) return <Navigate to="/" replace />;
