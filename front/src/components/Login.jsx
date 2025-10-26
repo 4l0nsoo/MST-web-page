@@ -10,6 +10,7 @@ function Login() {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
   // 🔍 Verifica si ya hay sesión activa
   useEffect(() => {
@@ -19,7 +20,7 @@ function Login() {
       return;
     }
 
-    fetch("http://localhost:3000/api/verify-token", {
+    fetch(`${API_URL}/api/verify-token`, {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((res) => {
@@ -30,7 +31,7 @@ function Login() {
         localStorage.removeItem("token");
       })
       .finally(() => setCheckingToken(false)); // ✅ asegura que termine el estado
-  }, [navigate]);
+  }, [navigate, API_URL]);
 
   // 🕐 Mientras verifica el token, no mostrar el formulario aún
   if (checkingToken) return <p>Verificando sesión...</p>;
@@ -42,7 +43,7 @@ function Login() {
     setError("");
 
     try {
-      const res = await fetch("http://localhost:3000/api/login-admin", {
+      const res = await fetch(`${API_URL}/api/login-admin`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),

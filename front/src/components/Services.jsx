@@ -7,7 +7,7 @@ import "./styles/Services.css"
 import { mantenimiento, redes, arduino, tecnicos } from '../assets/servicesimport.js'
 
 function Services() {
-  
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000"
 
 const [expandido, setExpandido] = useState(-1)
 const cont1 = useRef(null)
@@ -25,7 +25,7 @@ const [code, setCode] = useState("");
     setLoading(true);
 
     try {
-      const res = await fetch(`http://localhost:3000/api/client/${code}`);
+      const res = await fetch(`${API_URL}/api/client/${code}`);
       if (!res.ok) throw new Error("Código no encontrado");
       const data = await res.json();
       setClient(data);

@@ -20,10 +20,11 @@ app.use(express.json());
 // app.use(cors()); // Permitir todas las solicitudes CORS durante el desarrollo
 
 app.use(cors({
-  origin: ["https://mst-web-page.vercel.app"],
-  methods: ["GET", "POST", "OPTIONS"],
-  allowedHeaders: ["Content-Type"],
+  origin: ["http://localhost:5173", "https://mst-web-page.vercel.app/"],
+  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+  credentials: true
 }));
+
 
 // Rutas
 app.use("/api/mail", mailRoutes);

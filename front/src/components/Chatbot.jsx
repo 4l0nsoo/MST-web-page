@@ -7,6 +7,7 @@ export function Chatbot() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const chatRef = useRef(null);
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000"
 
   // Animación de despliegue con GSAP
   useEffect(() => {
@@ -37,7 +38,7 @@ export function Chatbot() {
     setInput("");
 
     try {
-      const res = await fetch("http://localhost:3000/api/chatbot", {
+      const res = await fetch(`${API_URL}/api/chatbot`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ message: trimmed }),
