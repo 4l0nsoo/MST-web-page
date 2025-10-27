@@ -75,7 +75,7 @@ function EditPc() {
   return (
     <div className="editpc-container">
       <h2>Panel del Técnico</h2>
-      <Link to={"/"}>Home</Link>
+      <Link to={"/"}><button>Home</button></Link>
       {/* 🔍 Buscar cliente */}
       <form className="search-form" onSubmit={handleSearch}>
         <input
