@@ -9,6 +9,7 @@
   display: grid;
   margin: 2% 8%;
   grid-template-columns: 1fr 4fr 1fr ;
+  grid-column: -1/4;
   gap: 1rem;
   min-height: 100vh;
   padding-top: 10vh;
@@ -49,7 +50,6 @@
     }
     .values ol{
       margin:0;
-      padding-left:20px;
       display:grid;
       gap:12px;
     }
@@ -73,8 +73,100 @@
 
 
 .contentContainer{
-    grid-column: 2/5;
+    grid-column: 1/5;
 }
+
+.imgPlano{
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.imgPlano img{
+  width: 80vw;
+  border-radius: 12px;
+}
+
+.team-section {
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  margin-top: 60px;
+  position: relative;
+}
+
+.team-main-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #294795;
+}
+
+.team-dynamic-title {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  color: #666;
+  transition: opacity 0.4s ease;
+}
+
+.team-slider-container {
+  position: relative;
+  width: 80vw; /* más comprimido a los lados */
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-slider {
+  display: flex;
+  position: relative; /* corrige el inicio en index 0 */
+  transition: transform 0.6s ease-in-out;
+  will-change: transform;
+  align-items: start;
+  height: 500px;
+}
+
+.team-slide {
+  min-width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.team-slide img {
+  width: 50%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.arrow {
+  position: absolute;
+  background: rgba(44, 46, 168, 0.8);
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  transition: background 0.3s ease;
+}
+
+.arrow:hover {
+  background: #294795;
+  color: white;
+}
+
+.arrow.left {
+  left: 5%;
+}
+
+.arrow.right {
+  right: 5%;}
 
 @media (min-width:600px) {
   .home-Container{
@@ -85,6 +177,23 @@
     grid-column: 2/3;
   }
   
+}
+
+.team-slider {
+  display: flex;
+  position: relative; /* corrige el inicio en index 0 */
+  transition: transform 0.6s ease-in-out;
+  will-change: transform;
+  align-items: center;
+  height: 300px;
+}
+
+.team-slide img {
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 iframe{

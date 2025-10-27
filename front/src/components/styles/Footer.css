@@ -6,10 +6,16 @@
     height: 20vh;
 }
 
+.RRSS{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .footerCont svg{
-    width: 30px;
-    margin: 50px 1px 10px;
+    width: 50px;
 }
 
 .adicional{

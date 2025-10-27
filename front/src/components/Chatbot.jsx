@@ -7,9 +7,9 @@ export function Chatbot() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
   const chatRef = useRef(null);
-  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000"
+  const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
-  // Animación de despliegue con GSAP
+  // 👇 Animación de despliegue con GSAP
   useEffect(() => {
     if (expandido) {
       gsap.to(chatRef.current, {
@@ -19,6 +19,16 @@ export function Chatbot() {
         ease: "power2.out",
         pointerEvents: "auto",
       });
+
+      // 👇 Solo si no hay mensajes, mostrar saludo inicial
+      if (messages.length === 0) {
+        setMessages([
+          {
+            from: "bot",
+            text: "👋 ¡Hola! Soy el asistente virtual de MST. ¿En qué puedo ayudarte hoy?",
+          },
+        ]);
+      }
     } else {
       gsap.to(chatRef.current, {
         height: 0,
@@ -28,7 +38,7 @@ export function Chatbot() {
         pointerEvents: "none",
       });
     }
-  }, [expandido]);
+  }, [expandido, messages.length]); // 👈 se ejecuta cuando el chat se abre o cierra
 
   const sendMessage = async () => {
     const trimmed = input.trim();

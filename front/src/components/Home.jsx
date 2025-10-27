@@ -19,9 +19,9 @@ const Home = () => {
         <section className="info-section">
           <nav className="sidebar">
             <ul>
-              <li><Link to={"/aboutus"}>Conócenos</Link></li>
-              <li><Link to={"/services"}>Servicios</Link></li>
-              <li><Link to={"/products"}>Productos</Link></li>
+              <Link to={"/aboutus"}><li>Conócenos</li></Link>
+              <Link to={"/services"}><li>Servicios</li></Link>
+              <Link to={"/products"}><li>Productos</li></Link>
             </ul>
           </nav>
 

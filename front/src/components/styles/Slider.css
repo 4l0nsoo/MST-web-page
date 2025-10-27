@@ -7,18 +7,19 @@
     position: relative;
     display: flex;
     justify-content: center;
-    top: 100px;
-    height: 400px;
-    overflow: hidden;
+    top: 0px;
+    height: 80vh;
+
+    overflow: none;
 }
 
 .imgSlider .slide{
     z-index: 1;
     position: absolute;
-    top: -12%;
-    margin: 5% 0 0;
+    top: 0%;
+    margin: 1.5% 0 0;
     opacity: 0;
-
+    transition: 2s;
 }
 
 .imgSlider .slide.active{
@@ -28,8 +29,10 @@
 }
 
 .imgSlider .slide img{
-    /* width: 100vw; */
-    width: 700px;
+    width: 100vw;
+    height: 80vh;
+    /* width: 700px; */
+    object-fit: cover;
 
 }
 
