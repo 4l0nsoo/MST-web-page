@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./styles/EditPc.css";
+import { Link } from "react-router-dom";
 
 function EditPc() {
   const [refCode, setRefCode] = useState("");
@@ -74,7 +75,7 @@ function EditPc() {
   return (
     <div className="editpc-container">
       <h2>Panel del Técnico</h2>
-
+      <Link to={"/"}>Home</Link>
       {/* 🔍 Buscar cliente */}
       <form className="search-form" onSubmit={handleSearch}>
         <input
