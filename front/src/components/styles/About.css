@@ -32,8 +32,8 @@
 
 .imgCont img:last-child{
   position:absolute;
-  top: 40%;
-  width: 150px;
+  top: 45%;
+  width: 200px;
 }
     .values {
       max-width:800px;

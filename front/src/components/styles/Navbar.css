@@ -30,6 +30,10 @@ a{
   color: white;
 }
 
+.light{
+  color: white;
+}
+
 .navbar__left .navbar__brand {
   display: flex;
   flex-direction: row;

@@ -12,6 +12,12 @@
   padding-top: 10vh;
 }
 
+h1{
+  grid-column: 1/5;
+  text-align: center;
+  color: #161616;
+}
+
 .info-section {
   grid-column: 1/5;
   display: grid;

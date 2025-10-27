@@ -13,6 +13,14 @@
     overflow: none;
 }
 
+.logo{
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    top: 20vh;
+    z-index: 3;
+}
+
 .imgSlider .slide{
     z-index: 1;
     position: absolute;
@@ -60,29 +68,32 @@
 
 @media (max-width: 600px){
     .imgSlider{
-        height: 18vh;
-        top:150px
+        height: 50vh;
+        top:0px
     }
 
-    .imgSlider .slide img{
-        width: 250px;
-        
-    }
+.imgSlider .slide img{
+    width: 100vw;
+    height: 50vh;
+    /* width: 700px; */
+    object-fit: cover;
+
+}
 
     .imgSlider .navigation{
-        bottom: 20%;
+        bottom: 10%;
     }
 }
 
 @media (max-height: 800px) and (max-width: 400px){
     .imgSlider .slide {
-        top: -35%;
+        top: -25%;
     }
 }
 
 @media (max-height: 700px) and (max-width: 400px){
     .imgSlider .slide {
-        top: -60%;
+        top: -50%;
     }
         .imgSlider .navigation{
         bottom: 35%;

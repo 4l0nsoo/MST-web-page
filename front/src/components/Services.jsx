@@ -4,7 +4,7 @@ import Navbar from './Navbar.jsx'
 import Footer from './Footer.jsx'
 import ClientPopup from './ClientPopup.jsx'
 import "./styles/Services.css"
-import { mantenimiento, redes, arduino, tecnicos } from '../assets/servicesimport.js'
+import { mantenimiento, redes, arduino } from '../assets/servicesimport.js'
 
 function Services() {
 const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000"
@@ -117,9 +117,7 @@ const handleClick = (e, ref, index) => {
 
       {client && <ClientPopup client={client} onClose={closePopup} />}
     </div>
-            <div className='employees'>
-              <img src={tecnicos[0]} alt="" />
-            </div>
+
           </div>
           <div></div>
         

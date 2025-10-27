@@ -16,6 +16,7 @@ const Home = () => {
   return (
     <>
       <div className="home-container">
+        <h1>Bienvenidos a MST !</h1>
         <section className="info-section">
           <nav className="sidebar">
             <ul>

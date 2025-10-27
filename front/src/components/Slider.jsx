@@ -3,6 +3,7 @@ import "./styles/Slider.css"
 import pc from "../assets/slider/pc.jpg"
 import red from"../assets/slider/red.jpg"
 import software from "../assets/slider/software.jpg"
+import logo from"../assets/logo.png"
 
 function Slider() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -23,6 +24,7 @@ function Slider() {
   return (
     <div>
         <div className="imgSlider">
+          <img className='logo' src={logo} alt="" />
           {slides.map((content, index) => (
             
             <div key={index} className={`slide ${activeIndex === index ? "active" : ""}`}> <img src={content.src} alt={content.alt} /></div>
