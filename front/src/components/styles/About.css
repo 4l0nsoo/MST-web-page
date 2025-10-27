@@ -168,7 +168,7 @@
 .arrow.right {
   right: 5%;}
 
-@media (min-width:600px) {
+@media (max-width:600px) {
   .home-Container{
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
@@ -177,15 +177,13 @@
     grid-column: 2/3;
   }
   
-}
-
 .team-slider {
   display: flex;
   position: relative; /* corrige el inicio en index 0 */
   transition: transform 0.6s ease-in-out;
   will-change: transform;
   align-items: center;
-  height: 300px;
+  height: 500px;
 }
 
 .team-slide img {
@@ -195,6 +193,8 @@
   border-radius: 20px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
+}
+
 
 iframe{
   margin: 80px 20px;
