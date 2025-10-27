@@ -24,7 +24,7 @@ function Slider() {
   return (
     <div>
         <div className="imgSlider">
-          <img className='logo' src={logo} alt="" />
+          <img className='logo glow-heartbeat' src={logo} alt="" />
           {slides.map((content, index) => (
             
             <div key={index} className={`slide ${activeIndex === index ? "active" : ""}`}> <img src={content.src} alt={content.alt} /></div>

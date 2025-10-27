@@ -21,6 +21,35 @@
     z-index: 3;
 }
 
+.glow-heartbeat {
+  display: inline-block;
+  border-radius: 12px;
+  animation: heartbeatGlow 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeatGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 0.2em #9419dbaa);
+
+  }
+  25% {
+    filter: drop-shadow(0 0 0.4em #9419dbaa);
+
+  }
+  40% {
+    filter: drop-shadow(0 0 0.8em #9419dbaa);
+
+  }
+  60% {
+    filter: drop-shadow(0 0 0.4em #9419dbaa);
+
+  }
+  80% {
+    filter: drop-shadow(0 0 0.2em #9419dbaa);
+
+  }
+}
+
 .imgSlider .slide{
     z-index: 1;
     position: absolute;
